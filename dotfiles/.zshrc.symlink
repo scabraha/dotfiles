@@ -3,12 +3,12 @@ ZSH_CUSTOM=$HOME/zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="gallois"
+ZSH_THEME="half-life"
 
 CASE_SENSITIVE="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
-SOLARIZED_THEME=light
+SOLARIZED_THEME=dark
 GITFAST_USE_OHMYZSH_PROMPT=1
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -29,4 +29,4 @@ source $ZSH/oh-my-zsh.sh
 #unsetopt correct_all
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*'
 
-export TZ=America/New_York
+export TZ=America/Denver
