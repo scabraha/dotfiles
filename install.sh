@@ -14,6 +14,7 @@ fi
 
 # Install dotfiles
 echo "Installing dotfiles"
+cp -r "${script_dir}/dotfiles/.oh-my-zsh" ~/
 "${script_dir}/manage/dotfiles.sh" install
 
 echo "Changing default shell for user : ${USER}"
