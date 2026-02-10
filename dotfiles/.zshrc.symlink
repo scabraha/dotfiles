@@ -29,4 +29,6 @@ source $ZSH/oh-my-zsh.sh
 #unsetopt correct_all
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*'
 
+alias gs="git status"
+
 export TZ=America/Denver
