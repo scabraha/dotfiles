@@ -37,7 +37,8 @@ plugins=(
 typeset -U path                 # Unique values in $path
 
 # --- AUTOMATIC UPDATES ---
-DISABLE_UPDATE_PROMPT=true      # Disable oh-my-zsh update prompt
+zstyle ':omz:update' mode auto       # Update without prompting
+zstyle ':omz:update' verbose silent  # Errors only
 
 # --- LOAD OH MY ZSH ---
 source "$ZSH/oh-my-zsh.sh"
