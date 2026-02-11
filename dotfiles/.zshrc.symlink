@@ -49,7 +49,3 @@ zstyle ':completion:*' matcher-list \
   'r:|[._-]=* r:|=*'              # Fuzzy matching for completion
 
 export TZ="America/Denver"        # Time zone
-
-# --- ALIASES ---
-alias gs="git status"
-alias gpom="gco main && git pull origin main --rebase && gco -"
