@@ -20,6 +20,11 @@ HIST_STAMPS="mm/dd/yyyy"        # History timestamps
 # --- PATH SETTINGS ---
 export PATH="$PYENV_ROOT/bin:$PATH"   # Add pyenv to PATH
 
+# Add lvim to PATH if it exists
+if [ -f "$HOME/.local/bin/lvim" ]; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
 # --- PLUGINS ---
 plugins=(
   git 
