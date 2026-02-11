@@ -1,11 +1,23 @@
-# Dotfiles codespaces
+# My Personal Dotfiles
 
-This is an adaptation of [dotfiles-public
-repo](https://github.com/vladistan/dotfiles-public) for use in
+This is my personal fork and customization of the [dotfiles-codespaces
+repo](https://github.com/vladistan/dotfiles-codespaces) for use in
 [development containers](https://containers.dev/) and [GitHub
-CodeSpaces](https://github.com/features/codespaces).  It is based
+Codespaces](https://github.com/features/codespaces). It's based
 on the original work of
-[@dcreager](https://github.com/dcreager/dotfiles-public).
+[@dcreager](https://github.com/dcreager/dotfiles-public) and adapted by
+[@vladistan](https://github.com/vladistan/dotfiles-codespaces).
+
+## Oh-My-Zsh Configuration
+
+This repository includes a pre-configured Oh-My-Zsh setup with:
+
+- **Theme**: half-life
+- **Plugins**: git, gitfast, z, aliases, aws, azure, brew, git-auto-fetch, ssh, and fzf (if available)
+- **Custom Configuration**: Located in `dotfiles/.zshrc.symlink`
+- **Custom Scripts**: Store custom ZSH scripts in `dotfiles/zsh/` with the `.symlink` extension
+
+The Oh-My-Zsh installation is copied from `dotfiles/.oh-my-zsh` to `~/.oh-my-zsh` during the install process.
 
 ## Why is this needed?
 
@@ -99,12 +111,55 @@ This container-specific dotfiles repo addresses both issues by
 combining the management script and the dotfiles into a single
 monorepo and being flexible with the location it's cloned into.
 
-## How to Use It
+## Installation
 
-1. [Fork](https://github.com/vladistan/dotfiles-codespaces/fork) the repo
-2. Modify files in the [dotfiles folder](https://github.com/vladistan/dotfiles-codespaces/tree/main/dotfiles) according to your preferences
-3. [Configure](#dotfiles-in-containers) your environment to use the repo
-4. PROFIT!
+This repository automatically installs and configures:
+- **Dotfiles**: Custom shell and git configurations
+- **Oh-My-Zsh**: ZSH framework with plugins and themes
+- **Shell Configuration**: Sets ZSH as the default shell
+
+### Automatic Installation (Codespaces/Dev Containers)
+
+1. [Configure](#dotfiles-in-containers) your GitHub Codespaces or VSCode Dev Container settings to use this repository
+2. When a new container is created, the `install.sh` script automatically runs and:
+   - Backs up any existing `.zshrc` file to `.zshrc.bak`
+   - Copies Oh-My-Zsh configuration from `dotfiles/.oh-my-zsh` to your home directory
+   - Installs all `.symlink` files (see below)
+   - Changes your default shell to ZSH
+
+### Manual Installation
+
+To manually install in any environment, run:
+
+```bash
+./install.sh
+```
+
+### Understanding .symlink Files
+
+Files with the `.symlink` extension are automatically linked to your home directory by the install script. The `.symlink` suffix is removed when creating the symlink.
+
+**Location**: All `.symlink` files are stored in the `dotfiles/` directory and subdirectories.
+
+**Examples**:
+- `dotfiles/.zshrc.symlink` → `~/.zshrc`
+- `dotfiles/.gitconfig.symlink` → `~/.gitconfig`
+- `dotfiles/zsh/aliases.zsh.symlink` → `~/zsh/aliases.zsh`
+
+You can view all symlink files by running:
+```bash
+./manage/dotfiles.sh list
+```
+
+## Customizing Your Fork
+
+If you'd like to create your own dotfiles based on this repo:
+
+1. Fork this repository
+2. Modify files in the `dotfiles/` folder according to your preferences
+3. Edit `.symlink` files to customize configurations
+4. Update `dotfiles/.oh-my-zsh` settings if needed
+5. [Configure](#dotfiles-in-containers) your environment to use your fork
 
 ## WARNING:
 
