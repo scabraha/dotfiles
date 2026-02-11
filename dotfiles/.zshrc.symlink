@@ -4,7 +4,6 @@ ZSH_CUSTOM="$HOME/zsh"          # Custom scripts/themes location
 ZSH_THEME="half-life"           # See ~/.oh-my-zsh/themes/ for available themes
 
 # --- SHELL BEHAVIOR OPTIONS ---
-CASE_SENSITIVE="true"           # Command completion is case sensitive
 ENABLE_CORRECTION="true"        # Enable spelling correction
 COMPLETION_WAITING_DOTS="true"  # Show dots while waiting for completion
 SOLARIZED_THEME=dark            # Solarized color theme, if applicable
