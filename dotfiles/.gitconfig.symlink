@@ -1,9 +1,71 @@
+# ============================================================================
+# User Information
+# ============================================================================
+[user]
+    name = Scott Abraham
+    email = scabraha@github.com
+
+# ============================================================================
+# Core Git Settings
+# ============================================================================
+[core]
+    # Enable commit graph for improved performance
+    commitGraph = true
+    # Global ignore and attributes files
+    excludesfile = ~/.gitignore.global
+    attributesfile = ~/.gitattributes.global
+    # Configure less pager: -F (quit if one screen), -R (raw control chars), -S (chop long lines), -X (no init)
+    pager = less -FRSX
+    # Display non-ASCII file names as-is
+    quotepath = true
+    # Convert CRLF to LF on commit (for cross-platform compatibility)
+    autocrlf = input
+    # Default text editor
+    editor = vim
+
+[init]
+    # Use 'main' as the default branch name for new repositories
+    defaultBranch = main
+
+# ============================================================================
+# Branch and Remote Settings
+# ============================================================================
+[branch]
+    # Automatically rebase when pulling
+    autosetuprebase = always
+
+[push]
+    # Push current branch to its upstream branch
+    default = upstream
+
+[fetch]
+    # Write commit graph during fetch for better performance
+    writeCommitGraph = true
+
+[url "git@github.com:"]
+    # Use SSH instead of HTTPS for GitHub repositories
+    insteadOf = https://github.com/
+
+# ============================================================================
+# Performance Settings
+# ============================================================================
+[gc]
+    # Write commit graph during garbage collection
+    writeCommitGraph = true
+
+[rerere]
+    # Remember how merge conflicts were resolved for future use
+    enabled = true
+
+# ============================================================================
+# Color Configuration
+# ============================================================================
 [color]
+    # Enable colored output for all commands
     ui = auto
     branch = auto
     diff = auto
     status = auto
-
 
 [color "branch"]
     current = yellow reverse
@@ -22,83 +84,58 @@
     frag = white bold
     commit = white bold
 
-[core]
-    commitGraph = true
-    excludesfile = ~/.gitignore.global
-    attributesfile = ~/.gitattributes.global
-    pager = less -FRSX
-    quotepath = true
-    autocrlf = input
-    editor = vim
-
-[fetch]
-    writeCommitGraph = true
-
-[gc]
-    writeCommitGraph = true
-
-[push]
-    default = upstream
-
+# ============================================================================
+# Aliases
+# ============================================================================
 [alias]
+    # ---- Diff Aliases ----
+    # Diff with color-words (shows word-level changes)
     d = diff --color-words
+    # Diff against HEAD
     dh = diff HEAD
+    # Diff staged changes
     dc = diff --staged
+    # Diff with word-diff format
     dw = diff --word-diff
+    # Another color-words diff (duplicate of 'd')
     dcw = diff --color-words
-    who = shortlog -s --
-    lol = log --graph --oneline --decorate --all
-
-    # https://git.wiki.kernel.org/articles/a/l/i/Aliases.html
-    # `git remote prune origin`: remove remote-tracking branches that were deleted from the remote repo
-    # `git gc`: cleanup unnecessary files and optimize the local repository
-    # `git clean -df`: remove untracked files and directories from the working tree
-    # `git stash clear`: remove all stashed states
-    trim = !git remote prune origin && git gc
-    cleanup = !git clean -df && git stash clear
-    # Add untracked, remove deleted, and show status
-    adda = !git add -A && git status
     # Diff what is staged for the next commit
     diffc = diff --cached
-    # Diff overview
+    # Diff with stat overview
     diffst = diff --stat
 
+    # ---- Log Aliases ----
+    # Compact graph log for all branches
+    lol = log --graph --oneline --decorate --all
     # Custom graph log (append any tree-ish)
     graph = log --pretty=nice --date-order --graph
     # Custom graph log for all branches
     grapha = log --pretty=nice --date-order --graph --all
-
     # Custom pretty log
     logp = log --pretty=nice --date-order
-
     # Diffstat log
     logst = log --stat
     # Short format diffstat log
     logsf = log --stat --format=oneline --abbrev-commit
 
-    # Find out who is currently active on the repository
-    # Displays committers in descending order of number of commits
+    # ---- Repository Maintenance Aliases ----
+    # Trim: prune remote branches and run garbage collection
+    # Reference: https://git.wiki.kernel.org/articles/a/l/i/Aliases.html
+    trim = !git remote prune origin && git gc
+    # Cleanup: remove untracked files and clear stash
+    cleanup = !git clean -df && git stash clear
+
+    # ---- Utility Aliases ----
+    # Add all changes (tracked and untracked) and show status
+    adda = !git add -A && git status
+    # Find out who is currently active on the repository (displays committers by number of commits)
     who = shortlog --numbered --summary --email --no-merges
 
+# ============================================================================
+# Pretty Formats
+# ============================================================================
 [pretty]
-    # tut: http://gitimmersion.com/lab_10.html
-    # ref: http://linux.die.net/man/1/git-log
-    # Result: <short-sha> <commit-message> (<pointer-names>) -- <commit-author-name>; <relative-time>
+    # Custom log format: <short-sha> <commit-message> (<pointer-names>) -- <commit-author-name>; <relative-time>
+    # Tutorial: http://gitimmersion.com/lab_10.html
+    # Reference: http://linux.die.net/man/1/git-log
     nice = "%C(yellow)%h%C(reset) %C(white)%s%C(cyan)%d%C(reset) -- %an; %ar"
-
-
-[branch]
-    autosetuprebase = always
-
-[rerere]
-    enabled = true
-
-[init]
-    defaultBranch = main
-
-[user]
-    name = Scott Abraham
-    email = scabraha@github.com
-
-[url "git@github.com:"]
-    insteadOf = https://github.com/
