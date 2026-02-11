@@ -34,6 +34,10 @@ plugins=(
   ssh        # SSH tools
 )
 
+if command -v fzf >/dev/null 2>&1; then
+  plugins+=(fzf)
+fi
+
 typeset -U path                 # Unique values in $path
 
 # --- AUTOMATIC UPDATES ---
