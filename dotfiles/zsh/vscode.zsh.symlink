@@ -1,0 +1,7 @@
+function bp-dev() {
+  code \
+    --new-window \
+    --disable-workspace-trust \
+    --remote ssh-remote+build@scabraha-$1.octoca.ts.net \
+    /workspace/enterprise2
+}
