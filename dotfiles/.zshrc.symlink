@@ -29,7 +29,6 @@ plugins=(
   aws        # Amazon Web Services CLI
   azure      # Azure CLI
   brew       # Homebrew management
-  fzf        # Fuzzy finder
   git-auto-fetch # Auto-fetch for git
   ssh        # SSH tools
 )
