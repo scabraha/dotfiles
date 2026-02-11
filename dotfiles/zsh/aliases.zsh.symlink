@@ -1,0 +1,2 @@
+alias bp-reload="./chroot-stop.sh && ./chroot-reset.sh && ./chroot-build.sh && ./chroot-start.sh && ./chroot-configure.sh"
+alias bp-ui="sudo update-reverse-proxy"
