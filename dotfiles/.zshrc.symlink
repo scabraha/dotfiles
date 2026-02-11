@@ -14,7 +14,7 @@ GITFAST_USE_OHMYZSH_PROMPT=1
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 HISTSIZE=50000
 SAVEHIST=50000
@@ -25,7 +25,11 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 plugins=(git gitfast z aliases aws azure brew fzf git-auto-fetch ssh)
 
 typeset -U path
+
+# Automatically update omz
+DISABLE_UPDATE_PROMPT=true
 source $ZSH/oh-my-zsh.sh
+
 #unsetopt correct_all
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*'
 export TZ=America/Denver
