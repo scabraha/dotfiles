@@ -99,3 +99,6 @@
 [user]
     name = Scott Abraham
     email = scabraha@github.com
+
+[url "git@github.com:"]
+    insteadOf = https://github.com/
